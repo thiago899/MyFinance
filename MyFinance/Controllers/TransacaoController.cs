@@ -44,15 +44,43 @@ namespace MyFinance.Controllers
                 TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
                 ViewBag.Registro = objTransacao.CarregarRegistro(id);
             }
+            ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
+            ViewBag.ListaPlanoContas = new PlanoContaModel(HttpContextAccessor).ListaPlanoContas();
             return View();
         }
-        public IActionResult Extrato()
+
+        [HttpGet]
+        public IActionResult ExcluirTransacao(int id)
         {
+            TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
+            ViewBag.Registro = objTransacao.CarregarRegistro(id);
+
+            return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult Excluir(int id)
+        {
+            TransacaoModel objTransacao = new TransacaoModel(HttpContextAccessor);
+            objTransacao.Excluir(id);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        [HttpPost]
+        public IActionResult Extrato(TransacaoModel formulario)
+        {
+            formulario.HttpContextAccessor = HttpContextAccessor;
+            ViewBag.ListaTransacao = formulario.ListaTransacao();
+            ViewBag.ListaContas = new ContaModel(HttpContextAccessor).ListaConta();
             return View();
         }
 
         public IActionResult Dashboard()
         {
+            ViewBag.Valores = "10, 20, 30, 40, 50";
+            ViewBag.Labels = "10, 20, 30, 40, 50";
+            ViewBag.Cores = "'#cecece', '#456545', '#fff125', '#784585', '#504030'";
             return View();
         }
     }
