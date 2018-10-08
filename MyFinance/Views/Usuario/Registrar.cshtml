@@ -1,31 +1,40 @@
 ﻿@model UsuarioModel
 
-<h3>Registrar minha conta</h3>
-<br />
-<form asp-controller="Usuario" asp-action="Registrar">
-    <div class="form-group">
-        <label for="Nome">Nome:</label>
-        <input type="text" class="form-control" asp-for="Nome">
-        <span asp-validation-for="Nome" class="text-danger"></span>
-    </div>
 
-    <div class="form-group">
-        <label for="Nome">Email:</label>
-        <input type="email" class="form-control" asp-for="Email">
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
+@{
 
-    <div class="form-group">
-        <label for="pwd">Senha:</label>
-        <input type="password" class="form-control" asp-for="Senha">
-        <span asp-validation-for="Senha" class="text-danger"></span>
-    </div>
+    Layout = "../Shared/_LayoutLogin.cshtml";
 
-    <div class="form-group">
-        <label for="pwd">Senha:</label>
-        <input type="date" class="form-control" asp-for="Data_nascimento">
-        <span asp-validation-for="Data_nascimento" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-success">Registrar </button>
-</form>
+}
 
+<div class="container" style="background-color:#e5e2e2; border-radius: 10px; padding: 20px; width: 400px;">
+    <h3>Registrar minha conta</h3>
+    <br />
+    <form asp-controller="Usuario" asp-action="Registrar">
+        <div class="form-group">
+            <label for="Nome">Nome:</label>
+            <input type="text" class="form-control" asp-for="Nome">
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Nome">Email:</label>
+            <input type="email" class="form-control" asp-for="Email">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">Senha:</label>
+            <input type="password" class="form-control" asp-for="Senha">
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">Senha:</label>
+            <input type="date" class="form-control" asp-for="Data_nascimento">
+            <span asp-validation-for="Data_nascimento" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success">Registrar </button>
+        <button type="button" class="btn btn-primary" onclick="javascript:window.location.href='../Usuario/Login'">Login </button>
+    </form>
+</div>

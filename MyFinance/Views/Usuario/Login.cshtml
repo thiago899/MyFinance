@@ -1,36 +1,43 @@
 ﻿@model UsuarioModel
 
 @{
-try
 
-{
+    Layout = "../Shared/_LayoutLogin.cshtml";
 
-if (@TempData["MensagemLoginInvalido"].ToString() != null)
-{
-    <div class="alert alert-danger">
-        <strong>Atenção!</strong> @TempData["MensagemLoginInvalido"]
-    </div>
-     }
-  }
-catch{}
 }
 
+<div class="container" style="background-color:#e5e2e2; border-radius: 10px; padding: 20px; width: 300px;">
+    @{
 
+        try
+        {
 
-<form asp-controller="Usuario" asp-action="ValidarLogin">
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" class="form-control" asp-for="Email">
-    </div>
-    <div class="form-group">
-        <label for="pwd">Senha:</label>
-        <input type="password" class="form-control" asp-for="Senha">
-    </div>
-    <div class="form-group form-check">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Lembrar meu acesso
-        </label>
-    </div>
-    <button type="submit" class="btn btn-primary">Entrar </button>
-</form>
+            if (@TempData["MensagemLoginInvalido"].ToString() != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Atenção!</strong> @TempData["MensagemLoginInvalido"]
+                </div>
+            }
+        }
+        catch { }
+
+    }
+                <form asp-controller="Usuario" asp-action="ValidarLogin">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" asp-for="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Senha:</label>
+                        <input type="password" class="form-control" asp-for="Senha">
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox"> Lembrar meu acesso
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="javascript:window.location.href='../Usuario/Registrar'">Registrar</button>
+                    <button type="submit" class="btn btn-default">Entrar </button>
+                </form>
+</div>
 
