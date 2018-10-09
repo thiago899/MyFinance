@@ -81,15 +81,15 @@ namespace MyFinance.Models
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 item = new TransacaoModel();
-                item.Id = int.Parse(dt.Rows[0]["ID"].ToString());
-                item.Data = DateTime.Parse(dt.Rows[0]["DATA"].ToString()).ToString("dd/MM/yyy");
-                item.Tipo = dt.Rows[0]["Tipo"].ToString();
-                item.Descricao = dt.Rows[0]["historico"].ToString();
-                item.Valor = double.Parse(dt.Rows[0]["Valor"].ToString());
-                item.Conta_Id = int.Parse(dt.Rows[0]["Conta_Id"].ToString());
-                item.NomeConta = dt.Rows[0]["conta"].ToString();
-                item.Plano_Contas_Id = int.Parse(dt.Rows[0]["Plano_Contas_Id"].ToString());
-                item.DescricaoPlanoConta = dt.Rows[0]["plano_conta"].ToString();
+                item.Id = int.Parse(dt.Rows[i]["ID"].ToString());
+                item.Data = DateTime.Parse(dt.Rows[i]["DATA"].ToString()).ToString("dd/MM/yyy");
+                item.Tipo = dt.Rows[i]["Tipo"].ToString();
+                item.Descricao = dt.Rows[i]["historico"].ToString();
+                item.Valor = double.Parse(dt.Rows[i]["Valor"].ToString());
+                item.Conta_Id = int.Parse(dt.Rows[i]["Conta_Id"].ToString());
+                item.NomeConta = dt.Rows[i]["conta"].ToString();
+                item.Plano_Contas_Id = int.Parse(dt.Rows[i]["Plano_Contas_Id"].ToString());
+                item.DescricaoPlanoConta = dt.Rows[i]["plano_conta"].ToString();
 
                 lista.Add(item);
             }

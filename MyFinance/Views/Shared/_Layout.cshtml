@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MyFinance</title>
+    <title>@ViewData["Title"] - My Finance</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -26,20 +26,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Menu" class="navbar-brand">MyFinance</a>
+                <a asp-area="" asp-controller="Home" asp-action="Menu" class="navbar-brand">My Finance</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Menu">Menu</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li id="menuContato" style="display:none;"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
+                <div id="NomeUsuarioLogado"></div>
             </div>
+            
             @using Microsoft.AspNetCore.Http;
             @inject IHttpContextAccessor HttpContextAccessor
-            <div id="NomeUsuarioLogado"></div>
+
         </div>
     </nav>
+
 
     <partial name="_CookieConsentPartial" />
 
@@ -81,8 +84,13 @@
         if (nome != "") {
             var divNome = document.getElementById("NomeUsuarioLogado");
             divNome.innerHTML = "Olá " + nome + " <a href='../Usuario/Login/0'>(Sair)</a>";
-            divNome.style = "color:azure; text-align: right; height: 20px; padding-top: 1px;"
+            divNome.style = "color:azure; text-align: right; height: 20px; padding-top: 10px;"
+
+            var MenuContato = document.getElementById("menuContato");
+            MenuContato.style.display = "inline";
         }
+
+
         //else{
         //    window.location.href = '../Usuario/Login';
         //}
