@@ -166,14 +166,29 @@ namespace MyFinance.Models
         public double Total { get; set; }
         public string PlanoConta { get; set; }
 
+        public IHttpContextAccessor HttpContextAccessor { get; set; }
+
+        public Dashboard()
+        {
+
+        }
+
+        public Dashboard (IHttpContextAccessor httpContextAccessor)
+        {
+            HttpContextAccessor = httpContextAccessor;
+        }
+
+
         public List<Dashboard> RetornarDadosGraficoPie()
         {
             List<Dashboard> lista = new List<Dashboard>();
             Dashboard item;
 
+            string id_usuario_logado = HttpContextAccessor.HttpContext.Session.GetString("IdUsuarioLogado");
+
             string sql = "select sum(t.valor) as total, p.Descricao " +
                 "from transacao as t inner join plano_contas as p " +
-                "on t.Plano_Contas_Id = p.Id where t.Tipo = 'D'  group by p.Descricao;";
+                $"on t.Plano_Contas_Id = p.Id where t.Tipo = 'D' and t.usuario_id={id_usuario_logado}  group by p.Descricao;";
             DAL objDAL = new DAL();
             DataTable dt = new DataTable();
             dt = objDAL.RetDataTable(sql);
