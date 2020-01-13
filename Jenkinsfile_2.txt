@@ -46,7 +46,7 @@ stages{
             script {
                 /*app = docker.build("joittest/eproc")*/ //Modo Anterior sem environment
                 /* dockerimage = docker.build registry + ":${env.BUILD_NUMBER}" */
-				dockerimage = docker.build ("MyFinance/MyFinance")
+				dockerimage = docker.build ("MyFinance")
             }
         }
     }
