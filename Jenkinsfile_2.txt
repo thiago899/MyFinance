@@ -20,7 +20,7 @@ stages{
          * docker build on the command line */
         steps{
             script {
-                /*app = docker.build("joittest/eproc")*/ //Modo Anterior sem environment
+                /*app = docker.build("local")*/ //Modo Anterior sem environment
                 /* dockerimage = docker.build registry + ":${env.BUILD_NUMBER}" */
 				dockerimage = docker.build ("pipeline {
     /*def app */
