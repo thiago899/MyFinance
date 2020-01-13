@@ -8,7 +8,7 @@ LABEL maintainer="Joit Solutions"
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.1 AS build
 #FROM mcr.microsoft.com/dotnet/core/sdk:2.2-nanoserver-sac2016 AS build
 WORKDIR /src
 COPY ["MyFinance/MyFinance.csproj", "MyFinance/"]
