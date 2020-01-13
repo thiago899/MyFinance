@@ -3,7 +3,7 @@ pipeline {
     agent any
     
     environment {
-        registry = "thiago899/docker-test"
+        /* registry = "thiago899/docker-test" */
         registryCredential = 'docker-hub-credentials'
         dockerImage = ''
     }
@@ -21,7 +21,8 @@ stages{
         steps{
             script {
                 /*app = docker.build("joittest/eproc")*/ //Modo Anterior sem environment
-                dockerimage = docker.build registry + ":${env.BUILD_NUMBER}"
+                /* dockerimage = docker.build registry + ":${env.BUILD_NUMBER}" */
+				dockerimage = docker.build ("desktop/myfinance")
             }
         }
     }
