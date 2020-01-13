@@ -3,7 +3,7 @@ pipeline {
     agent any
     
     environment {
-        registry = "joittest/eproc"
+        registry = "thiago899/docker-test"
         registryCredential = 'docker-hub-credentials'
         dockerImage = ''
     }
